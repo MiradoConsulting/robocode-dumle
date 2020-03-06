@@ -11,6 +11,8 @@ public class Dumle extends Robot
     /**
      * run: Dumle's default behavior
      */
+
+    private static String roomba = "Interactive";
     public void run() {
         // Initialization of the robot should be put here
 
@@ -21,10 +23,6 @@ public class Dumle extends Robot
 
         // Robot main loop
         while(true) {
-            // Replace the next 4 lines with any behavior you would like
-            ahead(100);
-            turnGunRight(360);
-            back(100);
             turnGunRight(360);
         }
     }
@@ -33,8 +31,20 @@ public class Dumle extends Robot
      * onScannedRobot: What to do when you see another robot
      */
     public void onScannedRobot(ScannedRobotEvent e) {
-        // Replace the next line with any behavior you would like
-        fire(2);
+        if (e.getName() == roomba){  // Albert
+            double bearing = e.getBearing();
+            double distance = e.getDistance();
+            turnRight(bearing);
+            ahead(distance);
+        } else {
+            fire(1);
+        }
+    }
+
+    public void onHitRobot(HitRobotEvent e){
+        if (e.getName() == roomba){
+
+        }
     }
 
     /**
@@ -42,7 +52,7 @@ public class Dumle extends Robot
      */
     public void onHitByBullet(HitByBulletEvent e) {
         // Replace the next line with any behavior you would like
-        back(10);
+        ahead(100);
     }
 
     /**
@@ -51,5 +61,6 @@ public class Dumle extends Robot
     public void onHitWall(HitWallEvent e) {
         // Replace the next line with any behavior you would like
         back(20);
+
     }
 }
