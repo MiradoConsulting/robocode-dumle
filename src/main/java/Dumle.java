@@ -15,7 +15,8 @@ public class Dumle extends Robot
 
 //    private static String roomba = "Roomba";
     private static String roomba = "Roomba";
-    private static String bitch = "bitch"
+    private static String bitch = "bitch";
+//    private static String roomba = "sample.MyFirstRobot";
     private final Color[] colors = {Color.BLUE, Color.YELLOW, Color.ORANGE, Color.RED, Color.GREEN};
 
     public void run() {
@@ -23,15 +24,10 @@ public class Dumle extends Robot
         while(true) {
             turnGunRight(360);
             ahead(100);
-//            ahead(100);
             changeColor();
         }
     }
 
-    public void kill(){
-        turnRight(360);
-        ahead(100);
-    }
 
     public void changeColor(){
         Random generator = new Random();
@@ -57,10 +53,9 @@ public class Dumle extends Robot
             if (e.getDistance() > 150) {
                 ahead(100);
             }
-            else if (e.getDistance() < 10){
+            else if (e.getDistance() < 75){
                 // Move to the right
                 turnRight(25);
-                ahead(100);
                 turnGunRight(360);
                 if (!e.getName().contains(roomba)){
                     turnRadarRight(getHeading() - getRadarHeading() + e.getBearing());
