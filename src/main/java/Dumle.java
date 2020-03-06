@@ -80,6 +80,8 @@ public class Dumle extends Robot
      */
     public void onHitByBullet(HitByBulletEvent e) {
         changeColor();
+        turnRight(90);
+        back(100);
     }
 
     /**
