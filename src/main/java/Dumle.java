@@ -13,9 +13,9 @@ public class Dumle extends Robot
      * run: Dumle's default behavior
      */
 
-//    private static String roomba = "Roomba";
+    private static String roomba = "Roomba";
     private static String bitch = "Biatch";
-    private static String roomba = "sample.RamFire";
+//    private static String roomba = "sample.RamFire";
     private final Color[] colors = {Color.BLUE, Color.YELLOW, Color.ORANGE, Color.RED, Color.GREEN};
 
     public void run() {
