@@ -1,5 +1,5 @@
 import robocode.*;
-//import java.awt.Color;
+import java.awt.Color;
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/Robot.html
 
@@ -15,7 +15,7 @@ public class Dumle extends Robot
     private static String roomba = "sample.Fire";
     public void run() {
         // Initialization of the robot should be put here
-
+        setAllColors(Color.DARK_GRAY);
         // After trying out your robot, try uncommenting the import at the top,
         // and the next line:
 
