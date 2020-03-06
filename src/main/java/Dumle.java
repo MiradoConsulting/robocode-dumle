@@ -13,7 +13,7 @@ public class Dumle extends Robot
      * run: Dumle's default behavior
      */
 
-    private static String roomba = "sample.Roomba";
+    private static String roomba = "Roomba";
     private final Color[] colors = {Color.BLUE, Color.YELLOW, Color.ORANGE, Color.RED, Color.GREEN};
 
     public void run() {
