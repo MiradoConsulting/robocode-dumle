@@ -13,16 +13,23 @@ public class Dumle extends Robot
      * run: Dumle's default behavior
      */
 
-    private static String roomba = "Roomba";
+//    private static String roomba = "Roomba";
+    private static String roomba = "sample.MyFirstRobot";
     private final Color[] colors = {Color.BLUE, Color.YELLOW, Color.ORANGE, Color.RED, Color.GREEN};
 
     public void run() {
         // Robot main loop
         while(true) {
             turnGunRight(360);
-            ahead(25);
+            ahead(100);
+//            ahead(100);
             changeColor();
         }
+    }
+
+    public void kill(){
+        turnRight(360);
+        ahead(100);
     }
 
     public void changeColor(){
@@ -31,24 +38,43 @@ public class Dumle extends Robot
         setAllColors(colors[randomIndex]);
     }
 
+    public void follow(ScannedRobotEvent e, int safeMargin){
+        double bearing = e.getBearing();
+        double distance = e.getDistance();
+        turnRight(bearing - safeMargin);
+        ahead(distance - safeMargin);
+    }
+
     /**
      * onScannedRobot: What to do when you see another robot
      */
     public void onScannedRobot(ScannedRobotEvent e) {
-        if (e.getName().contains(roomba)){
-            double bearing = e.getBearing();
-            double distance = e.getDistance();
-            turnRight(bearing - 10);
-            ahead(distance - 10);
-            double gunHeading = e.getHeading();
-        } else {
-            fire(1);
+        if (e.getName().contains(roomba)) {
+            turnRadarRight(getHeading() - getRadarHeading() + e.getBearing());
+            turnRight(e.getBearing());
+
+            if (e.getDistance() > 150) {
+                ahead(100);
+            }
+            else if (e.getDistance() < 10){
+                // Move to the right
+                turnRight(25);
+                ahead(100);
+                turnGunRight(360);
+                if (!e.getName().contains(roomba)){
+                    turnRadarRight(getHeading() - getRadarHeading() + e.getBearing());
+                    turnRight(e.getBearing());
+                    fire(1);
+                }
+            }
         }
         changeColor();
     }
 
     public void onHitRobot(HitRobotEvent e){
-        turnRight(25);
+        if (!e.getName().contains(roomba)){
+            turnRight(25);
+        }
         changeColor();
     }
 
@@ -56,9 +82,6 @@ public class Dumle extends Robot
      * onHitByBullet: What to do when you're hit by a bullet
      */
     public void onHitByBullet(HitByBulletEvent e) {
-        // Replace the next line with any behavior you would like
-//        ahead(100);
-//        back(50);
         changeColor();
     }
 
