@@ -12,7 +12,7 @@ public class Dumle extends Robot
      * run: Dumle's default behavior
      */
 
-    private static String roomba = "sample.MyFirstRobot";
+    private static String roomba = "sample.Fire";
     public void run() {
         // Initialization of the robot should be put here
 
@@ -36,7 +36,7 @@ public class Dumle extends Robot
             double bearing = e.getBearing();
             double distance = e.getDistance();
             turnRight(bearing);
-            ahead(distance);
+            ahead(distance - 10);
         } else {
             fire(1);
         }
