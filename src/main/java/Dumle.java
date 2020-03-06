@@ -13,10 +13,9 @@ public class Dumle extends Robot
      * run: Dumle's default behavior
      */
 
-//    private static String roomba = "Roomba";
     private static String roomba = "Roomba";
-    private static String bitch = "bitch";
-//    private static String roomba = "sample.MyFirstRobot";
+    private static String bitch = "Biatch";
+//    private static String roomba = "sample.RamFire";
     private final Color[] colors = {Color.BLUE, Color.YELLOW, Color.ORANGE, Color.RED, Color.GREEN};
 
     public void run() {
@@ -35,12 +34,12 @@ public class Dumle extends Robot
         setAllColors(colors[randomIndex]);
     }
 
-    public void follow(ScannedRobotEvent e, int safeMargin){
-        double bearing = e.getBearing();
-        double distance = e.getDistance();
-        turnRight(bearing - safeMargin);
-        ahead(distance - safeMargin);
-    }
+//    public void follow(ScannedRobotEvent e, int safeMargin){
+//        double bearing = e.getBearing();
+//        double distance = e.getDistance();
+//        turnRight(bearing - safeMargin);
+//        ahead(distance - safeMargin);
+//    }
 
     /**
      * onScannedRobot: What to do when you see another robot
@@ -54,15 +53,17 @@ public class Dumle extends Robot
                 ahead(100);
             }
             else if (e.getDistance() < 75){
-                // Move to the right
-                turnRight(25);
-                turnGunRight(360);
-                if (!e.getName().contains(roomba)){
-                    turnRadarRight(getHeading() - getRadarHeading() + e.getBearing());
-                    turnRight(e.getBearing());
-                    fire(1);
-                }
+                back(50);
             }
+                // Move to the right
+//                turnRight(25);
+//                turnGunRight(360);
+//                if (!e.getName().contains(roomba)){
+//                    turnRadarRight(getHeading() - getRadarHeading() + e.getBearing());
+//                    turnRight(e.getBearing());
+//                    fire(1);
+//                }
+//            }
         }
         changeColor();
     }
