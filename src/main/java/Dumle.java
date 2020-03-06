@@ -35,7 +35,7 @@ public class Dumle extends Robot
      * onScannedRobot: What to do when you see another robot
      */
     public void onScannedRobot(ScannedRobotEvent e) {
-        if (e.getName().equals(roomba)){
+        if (e.getName().contains(roomba)){
             double bearing = e.getBearing();
             double distance = e.getDistance();
             turnRight(bearing - 10);
