@@ -14,7 +14,8 @@ public class Dumle extends Robot
      */
 
 //    private static String roomba = "Roomba";
-    private static String roomba = "sample.MyFirstRobot";
+    private static String roomba = "Roomba";
+    private static String bitch = "bitch"
     private final Color[] colors = {Color.BLUE, Color.YELLOW, Color.ORANGE, Color.RED, Color.GREEN};
 
     public void run() {
@@ -49,7 +50,7 @@ public class Dumle extends Robot
      * onScannedRobot: What to do when you see another robot
      */
     public void onScannedRobot(ScannedRobotEvent e) {
-        if (e.getName().contains(roomba)) {
+        if (e.getName().contains(roomba) || e.getName().contains(bitch)) {
             turnRadarRight(getHeading() - getRadarHeading() + e.getBearing());
             turnRight(e.getBearing());
 
