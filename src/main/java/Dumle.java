@@ -13,15 +13,10 @@ public class Dumle extends Robot
      * run: Dumle's default behavior
      */
 
-    private static String roomba = "sample.MyFirstRobot";
+    private static String roomba = "sample.Roomba";
     private final Color[] colors = {Color.BLUE, Color.YELLOW, Color.ORANGE, Color.RED, Color.GREEN};
 
     public void run() {
-        // Initialization of the robot should be put here
-//        setAllColors(Color.DARK_GRAY);
-//        colors.add(Color.BLUE, Color.YELLOW, Color.ORANGE, Color.RED, Color.GREEN);
-        // setColors(Color.red,Color.blue,Color.green); // body,gun,radar
-
         // Robot main loop
         while(true) {
             turnGunRight(360);
